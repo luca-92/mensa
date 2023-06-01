@@ -1,0 +1,4 @@
+venv/
+chiave.txt
+__pycache__/
+*.sqlite3

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="shortcut icon" type="image/png" href="{% static 'english/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'english/css/clearbtn.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'english/css/table.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'english/css/explanation.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'english/css/mainpage.css' %}"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery/1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+    <script type="text/javascript">
+    </script>
+    
+    <title>Prenotazione Pasto a mensa</title>
+    <style>
+      body {
+      background-image: url({% static "prenotamensa/logobg2.png" %});
+      background-repeat: no-repeat;
+      background-size: 500px;
+      }
+      </style>
+  </head>
+  <body style="background-color:#73A16C;">
+    <div class="container my-5 text-center">
+      <h3>Download Report Giornaliero</h3>
+    <form action="{% url 'excel' %}" method="post">
+      {% csrf_token %}
+        <label for="birthday">Giorno da Esportare:</label>
+        <input type="date" id="esporta" name="esporta">
+        <input type="submit" value="Esposta">
+      </form>
+    </div>
+    <div class="container my-5 text-center">
+      <h3>Download Report Mensile 2023</h3>
+      <form action="{% url 'excel2' %}" method="post">
+        {% csrf_token %}
+          <select name="dropdown">
+            <option value="01">Gennaio</option>
+            <option value="02">Febbraio</option>
+            <option value="03">Marzo</option>
+            <option value="04">Aprile</option>
+            <option value="05">Maggio</option>
+            <option value="06">Giugno</option>
+            <option value="07">Luglio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Settembre</option>
+            <option value="10">Ottobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Dicembre</option>
+        </select>
+        <input type="submit" value="Esposta">
+        </form>
+      </div>
+      <div class="container my-5 text-center">
+        <h3>Aggiungi Gruppo di Persone</h3>
+        <p>Per aggiungere un gruppo di nuove persone, compila il file excel nella cartella C:\Users\User\Downloads\CMD.xlsx.</br>
+        Una volta salvato, clicca sul pulsante aggiorna.</p>
+        <form action="{% url 'aggiorna' %}" method="post">
+          {% csrf_token %}
+            <input type="submit" value="Aggiorna">
+          </form>
+      </div>
+</body>
