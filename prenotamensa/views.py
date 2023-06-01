@@ -208,13 +208,17 @@ def excel(request):
 def excel2(request):
     if request.method == 'POST':
         mese = request.POST.get("dropdown", "")
-        print(mese)
+        max_giorni = 32
+        if str(mese) == "02":
+            max_giorni = 29
+        elif (str(mese) == "04") or (str(mese) == "06") or (str(mese) == "09") or (str(mese) == "11"):
+            max_giorni = 31
         response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename="'+str(mese)+'2023.xlsx"'        
 
         workbook = Workbook()
 
-        for i in range(1,32):
+        for i in range(1,max_giorni):
             tot_colazione = 0
             tot_pranzo = 0
             tot_cena = 0
