@@ -321,7 +321,7 @@ def aggiorna(request):
 def insert(request):
     if request.method == 'POST':
         nominativo = request.POST.get("nominativo", "")
-        numerocmd = request.POST.get("numerocmd", "")
+        numerocmd = request.POST.get("numerocmd", "").strip().upper()
         try:
             Personale.objects.get(numero_CMD = numerocmd)
         except:
